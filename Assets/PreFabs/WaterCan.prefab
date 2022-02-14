@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4270659641495728681}
-  m_Layer: 0
+  - component: {fileID: 6763134652989388808}
+  m_Layer: 8
   m_Name: WaterCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,6 +34,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6763134652989388808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6092271363128849259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a628b0ceb8a41ff4fa0761cbb1e099c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolName: wateringcan
+  usesound: {fileID: 0}
+  dropsound: {fileID: 0}
+  grabsound: {fileID: 0}
 --- !u!1001 &1139355514776903792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43,12 +60,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 410abd5ea0c02cb4ab1472ccf23a4a2c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.22399998
+      value: 0.0771
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 410abd5ea0c02cb4ab1472ccf23a4a2c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.425
+      value: 0.1349
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 410abd5ea0c02cb4ab1472ccf23a4a2c,
         type: 3}
@@ -97,13 +114,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 410abd5ea0c02cb4ab1472ccf23a4a2c,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.31858
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 410abd5ea0c02cb4ab1472ccf23a4a2c,
+        type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.45410812
+      value: 0.14466977
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 410abd5ea0c02cb4ab1472ccf23a4a2c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.31858
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 410abd5ea0c02cb4ab1472ccf23a4a2c,
         type: 3}
       propertyPath: m_Name
       value: pillarStone
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 410abd5ea0c02cb4ab1472ccf23a4a2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 410abd5ea0c02cb4ab1472ccf23a4a2c, type: 3}
@@ -123,17 +155,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3b08dee8eb057d94a9da7c0eec937d96,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1400001
+      value: -0.047
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b08dee8eb057d94a9da7c0eec937d96,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.526
+      value: 0.172
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b08dee8eb057d94a9da7c0eec937d96,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.049
+      value: -0.01561
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b08dee8eb057d94a9da7c0eec937d96,
         type: 3}
@@ -178,22 +210,27 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3b08dee8eb057d94a9da7c0eec937d96,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.03
+      value: 0.0095574
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b08dee8eb057d94a9da7c0eec937d96,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.015
+      value: 0.0047787
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b08dee8eb057d94a9da7c0eec937d96,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.021329999
+      value: 0.006795311
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 3b08dee8eb057d94a9da7c0eec937d96,
         type: 3}
       propertyPath: m_Name
       value: cliffGrey_entrance
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3b08dee8eb057d94a9da7c0eec937d96,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b08dee8eb057d94a9da7c0eec937d96, type: 3}
@@ -268,22 +305,27 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3f97cacfe0862704c8ebbd6a2efe2b8f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 0.015929
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3f97cacfe0862704c8ebbd6a2efe2b8f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.015929
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3f97cacfe0862704c8ebbd6a2efe2b8f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.015929
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 3f97cacfe0862704c8ebbd6a2efe2b8f,
         type: 3}
       propertyPath: m_Name
       value: stone_small8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3f97cacfe0862704c8ebbd6a2efe2b8f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f97cacfe0862704c8ebbd6a2efe2b8f, type: 3}

@@ -73,7 +73,11 @@ public class Farmer : MonoBehaviour
             SetItem(startItem).
             SetFarmG(startfarmGrowth).
             SetCorn(startCorn);
-
+        _UI.SetenergyUI(FWV.farmerEnergy, startEnergy)
+            .SetCornUI(FWV.cornStored)
+            .SetItemUI(FWV.currentItem)
+            .SetMoneyUI(FWV.money)
+            .SetSeedUI(FWV.seedAmount);
         CalculatePlan();
     }
 
@@ -182,12 +186,14 @@ public class Farmer : MonoBehaviour
         {
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
             StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
+            PickUpItem("Hoe");
         };
 
         grabW.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
             StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
+            PickUpItem("WaterCan");
         };
 
         grabC.OnEnter += (a) =>
@@ -321,13 +327,12 @@ public class Farmer : MonoBehaviour
         _currentTool.UseTool();
     }
 
-    void PickUpItem(string ItemName)
+    void PickUpItem(string itemName)
     {
-        var closeby = Physics.OverlapSphere(transform.position, 2).Where(a => a.GetComponent<Tool>().name == ItemName).First().GetComponent<Tool>();
+        var closeby = Physics.OverlapSphere(transform.position, 2).Where(a => a.GetComponent<Tool>().toolName == itemName).First().GetComponent<Tool>();
         var oldtool = _currentTool;
         _currentTool = closeby;
         oldtool.transform.position = transform.position;
-        
         _currentTool.transform.position = ToolPosition.position;
     }
 
@@ -372,9 +377,9 @@ public class Farmer : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         _AN.SetBool("walking", false);
-        _AN.SetBool(animOnArrival, true);
+        _AN.SetTrigger(animOnArrival);
         doingAction = true;
-        while(doingAction)
+        while (doingAction)
             yield return new WaitForEndOfFrame();
         ThankYouNext();
     }
