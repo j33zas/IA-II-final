@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 6b554659d4983594490bf4c4629cfed7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Funiko
+  fontNames:
+  - Funiko
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 14e58e2d807e5274e93697a83a9d8cfd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
