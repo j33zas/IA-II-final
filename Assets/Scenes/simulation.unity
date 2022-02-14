@@ -28203,40 +28203,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3861709156642828984, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+        type: 3}
+      propertyPath: Money
+      value: 
+      objectReference: {fileID: 721672529}
+    - target: {fileID: 3861709156642828984, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+        type: 3}
+      propertyPath: corn
+      value: 
+      objectReference: {fileID: 155744590}
+    - target: {fileID: 3861709156642828984, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+        type: 3}
+      propertyPath: seeds
+      value: 
+      objectReference: {fileID: 1009697371}
+    - target: {fileID: 3861709156642828984, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+        type: 3}
+      propertyPath: energyBar
+      value: 
+      objectReference: {fileID: 2127494358}
+    - target: {fileID: 3861709156642828984, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+        type: 3}
+      propertyPath: Hoe
+      value: 
+      objectReference: {fileID: 1553160173}
+    - target: {fileID: 3861709156642828984, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+        type: 3}
+      propertyPath: WateringCan
+      value: 
+      objectReference: {fileID: 294825871}
+    - target: {fileID: 3861709156642828984, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+        type: 3}
+      propertyPath: cornIMG
+      value: 
+      objectReference: {fileID: 984244265}
+    - target: {fileID: 3861709156642828984, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+        type: 3}
+      propertyPath: noItem
+      value: 
+      objectReference: {fileID: 186751934}
     - target: {fileID: 6198754806050474978, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
         type: 3}
       propertyPath: m_Name
       value: Farmer
-      objectReference: {fileID: 0}
-    - target: {fileID: 6198754806050474979, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: tentNode
-      value: 
-      objectReference: {fileID: 1915154594}
-    - target: {fileID: 6198754806050474979, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: farmNode
-      value: 
-      objectReference: {fileID: 1806991032}
-    - target: {fileID: 6198754806050474979, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: toolNode
-      value: 
-      objectReference: {fileID: 2122636670}
-    - target: {fileID: 6198754806050474979, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: shopNode
-      value: 
-      objectReference: {fileID: 1808132916}
-    - target: {fileID: 6198754806050474979, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: turnSpeed
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6198754806050474979, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: walkSpeed
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6198754806050474980, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
         type: 3}
@@ -28293,46 +28303,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6198754806050474982, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+    - target: {fileID: 8004259356616482846, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
         type: 3}
-      propertyPath: Money
+      propertyPath: tentNode
       value: 
-      objectReference: {fileID: 721672529}
-    - target: {fileID: 6198754806050474982, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+      objectReference: {fileID: 1915154594}
+    - target: {fileID: 8004259356616482846, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
         type: 3}
-      propertyPath: corn
+      propertyPath: farmNode
       value: 
-      objectReference: {fileID: 155744590}
-    - target: {fileID: 6198754806050474982, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+      objectReference: {fileID: 1806991032}
+    - target: {fileID: 8004259356616482846, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
         type: 3}
-      propertyPath: seeds
+      propertyPath: toolNode
       value: 
-      objectReference: {fileID: 1009697371}
-    - target: {fileID: 6198754806050474982, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+      objectReference: {fileID: 2122636670}
+    - target: {fileID: 8004259356616482846, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
         type: 3}
-      propertyPath: energyBar
+      propertyPath: shopNode
       value: 
-      objectReference: {fileID: 2127494358}
-    - target: {fileID: 6198754806050474982, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: Hoe
-      value: 
-      objectReference: {fileID: 1553160173}
-    - target: {fileID: 6198754806050474982, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: WateringCan
-      value: 
-      objectReference: {fileID: 294825871}
-    - target: {fileID: 6198754806050474982, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: cornIMG
-      value: 
-      objectReference: {fileID: 984244265}
-    - target: {fileID: 6198754806050474982, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
-        type: 3}
-      propertyPath: noItem
-      value: 
-      objectReference: {fileID: 186751934}
+      objectReference: {fileID: 1808132916}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e89bcaec8eda9a4fb383632c4c973ea, type: 3}
 --- !u!1001 &7477204802344894379

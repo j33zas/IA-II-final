@@ -35,7 +35,7 @@ public class Farmer : MonoBehaviour
 
     FarmerWorldValues FWV = new FarmerWorldValues();
 
-    FarmerStatsUI UI;
+    FarmerStatsUI _UI;
 
     FarmerPlanner _myPlanner;
 
@@ -53,6 +53,7 @@ public class Farmer : MonoBehaviour
     public Waypoint shopNode;
 
     public bool reachedDestination;
+    public bool doingAction;
     public float walkSpeed;
     public float turnSpeed;
 
@@ -62,8 +63,8 @@ public class Farmer : MonoBehaviour
 
     private void Start()
     {
-        UI = GetComponent<FarmerStatsUI>();
-        _AN = GetComponentInChildren<Animator>();
+        _UI = GetComponent<FarmerStatsUI>();
+        _AN = GetComponent<Animator>();
         _myPlanner = GetComponent<FarmerPlanner>();
         FWV.SetEnergy(startEnergy).
             SetMoney(startMoney).
@@ -174,67 +175,67 @@ public class Farmer : MonoBehaviour
         sleep.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), tentNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "sleep"));
         };
 
         grabH.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
         };
 
         grabW.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
         };
 
         grabC.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
         };
 
         leaveH.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
         };
 
         leaveW.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(),"grab"));
         };
 
         sellC.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), shopNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
         };
 
         harvest.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), farmNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "harvest"));
         };
 
         water.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), farmNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "water"));
         };
 
         plant.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), farmNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "plant"));
         };
 
         buy.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), shopNode);
-            StartCoroutine(WalkTo(walkPath.ToList()));
+            StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
         };
 
         fail.OnEnter += (a) =>
@@ -299,7 +300,7 @@ public class Farmer : MonoBehaviour
     void ThankYouNext()
     {
         _sm.Feed(FarmerAction.NextStep);
-        UI.SetenergyUI(FWV.farmerEnergy, startEnergy)
+        _UI.SetenergyUI(FWV.farmerEnergy, startEnergy)
             .SetCornUI(FWV.cornStored)
             .SetItemUI(FWV.currentItem)
             .SetMoneyUI(FWV.money)
@@ -352,16 +353,15 @@ public class Farmer : MonoBehaviour
     }
     #endregion
 
-    IEnumerator WalkTo(IEnumerable<Waypoint> path)
+    IEnumerator WalkTo(IEnumerable<Waypoint> path, string animOnArrival)
     {
-        reachedDestination = false;
         var lastNode = path.LastOrDefault();
         _AN.SetBool("walking", true);
         int i = 0;
         while(i < path.Count())
         {
             var currNode = path.Skip(i).First();
-            if (Vector3.Distance(currNode.transform.position, transform.position) > .01f)
+            if (Vector3.Distance(currNode.transform.position, transform.position) > .025f)
             {
                 Vector3 desiredDir = currNode.transform.position - transform.position;
                 transform.forward = Vector3.Lerp(transform.forward, desiredDir, Time.deltaTime * turnSpeed);
@@ -371,8 +371,16 @@ public class Farmer : MonoBehaviour
                 i++;
             yield return new WaitForEndOfFrame();
         }
-        reachedDestination = true;
         _AN.SetBool("walking", false);
+        _AN.SetBool(animOnArrival, true);
+        doingAction = true;
+        while(doingAction)
+            yield return new WaitForEndOfFrame();
         ThankYouNext();
+    }
+
+    public void EndAction()
+    {
+        doingAction = false;
     }
 }

@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8004259356616482846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229399657657538594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c50bb557e6dab7345a926a3c51c072c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finished: 0
+  ToolPosition: {fileID: 6198754806160420980}
+  startMoney: 50
+  startEnergy: 100
+  startSeeds: 0
+  startWatered: 1
+  startItem: 
+  startfarmGrowth: 0
+  startCorn: 0
+  tentNode: {fileID: 0}
+  farmNode: {fileID: 0}
+  toolNode: {fileID: 0}
+  shopNode: {fileID: 0}
+  reachedDestination: 0
+  doingAction: 0
+  walkSpeed: 2
+  turnSpeed: 60
+--- !u!114 &1873223859804644332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229399657657538594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a60ef4f85ea6504593c7ddfab822ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3861709156642828984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229399657657538594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86dd0a315c177f4d8002f74de1afd37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Money: {fileID: 0}
+  corn: {fileID: 0}
+  seeds: {fileID: 0}
+  energyBar: {fileID: 0}
+  Hoe: {fileID: 0}
+  WateringCan: {fileID: 0}
+  cornIMG: {fileID: 0}
+  noItem: {fileID: 0}
 --- !u!1 &6198754806050474978
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,9 +70,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6198754806050474980}
-  - component: {fileID: 6198754806050474979}
-  - component: {fileID: 6198754806050474981}
-  - component: {fileID: 6198754806050474982}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Untagged
@@ -34,65 +92,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6198754806050474979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6198754806050474978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c50bb557e6dab7345a926a3c51c072c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  finished: 0
-  ToolPosition: {fileID: 6198754806160420980}
-  startMoney: 50
-  startEnergy: 100
-  startSeeds: 0
-  startWatered: 1
-  startItem: 
-  startfarmGrowth: 0
-  startCorn: 0
-  tentNode: {fileID: 0}
-  farmNode: {fileID: 0}
-  toolNode: {fileID: 0}
-  shopNode: {fileID: 0}
-  walkSpeed: 1
-  turnSpeed: 15
---- !u!114 &6198754806050474981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6198754806050474978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a60ef4f85ea6504593c7ddfab822ea7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6198754806050474982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6198754806050474978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b86dd0a315c177f4d8002f74de1afd37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Money: {fileID: 0}
-  corn: {fileID: 0}
-  seeds: {fileID: 0}
-  energyBar: {fileID: 0}
-  Hoe: {fileID: 0}
-  WateringCan: {fileID: 0}
-  cornIMG: {fileID: 0}
-  noItem: {fileID: 0}
 --- !u!1 &6198754806160420979
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +211,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 180712c218bc2ba48bba3bcc099658be, type: 3}
+--- !u!1 &3229399657657538594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 180712c218bc2ba48bba3bcc099658be,
+    type: 3}
+  m_PrefabInstance: {fileID: 6913250787204088107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1912473173818141233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 180712c218bc2ba48bba3bcc099658be,
