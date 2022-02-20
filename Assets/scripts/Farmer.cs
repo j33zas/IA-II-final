@@ -56,6 +56,7 @@ public class Farmer : MonoBehaviour
     public bool doingAction;
     public float walkSpeed;
     public float turnSpeed;
+    string targetTool;
 
     Animator _AN;
 
@@ -184,16 +185,16 @@ public class Farmer : MonoBehaviour
 
         grabH.OnEnter += (a) =>
         {
+            targetTool ="hoe";
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
             StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
-            PickUpItem("Hoe");
         };
 
         grabW.OnEnter += (a) =>
         {
+            targetTool = "wateringcan";
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
             StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
-            PickUpItem("WaterCan");
         };
 
         grabC.OnEnter += (a) =>
@@ -204,20 +205,22 @@ public class Farmer : MonoBehaviour
 
         leaveH.OnEnter += (a) =>
         {
+            targetTool = "";
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
-            StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
+            StartCoroutine(WalkTo(walkPath.ToList(), "leave"));
         };
 
         leaveW.OnEnter += (a) =>
         {
+            targetTool = "";
             walkPath = LookForPath(GetNearestNode(transform.position), toolNode);
-            StartCoroutine(WalkTo(walkPath.ToList(),"grab"));
+            StartCoroutine(WalkTo(walkPath.ToList(),"leave"));
         };
 
         sellC.OnEnter += (a) =>
         {
             walkPath = LookForPath(GetNearestNode(transform.position), shopNode);
-            StartCoroutine(WalkTo(walkPath.ToList(), "grab"));
+            StartCoroutine(WalkTo(walkPath.ToList(), "leave"));
         };
 
         harvest.OnEnter += (a) =>
@@ -230,6 +233,7 @@ public class Farmer : MonoBehaviour
         {
             walkPath = LookForPath(GetNearestNode(transform.position), farmNode);
             StartCoroutine(WalkTo(walkPath.ToList(), "water"));
+            _currentTool.GetComponent<WateringCan>().SetProggress(FWV.farmGrowth);
         };
 
         plant.OnEnter += (a) =>
@@ -327,13 +331,29 @@ public class Farmer : MonoBehaviour
         _currentTool.UseTool();
     }
 
-    void PickUpItem(string itemName)
+    public void PickUpItem()
     {
-        var closeby = Physics.OverlapSphere(transform.position, 2).Where(a => a.GetComponent<Tool>().toolName == itemName).First().GetComponent<Tool>();
-        var oldtool = _currentTool;
-        _currentTool = closeby;
-        oldtool.transform.position = transform.position;
-        _currentTool.transform.position = ToolPosition.position;
+        var closeby = Physics.OverlapSphere(transform.position, 5, 1 << LayerMask.NameToLayer("Default"), QueryTriggerInteraction.Collide)
+            .Where(a => a.GetComponent<Tool>()).Select(a=>a.GetComponent<Tool>()).Where(a=>a.toolName == targetTool).FirstOrDefault();
+        if(closeby != default)
+        {
+            _currentTool = closeby;
+            _currentTool.PickUpTool();
+            _currentTool.transform.position = ToolPosition.position;
+            _currentTool.transform.rotation = ToolPosition.rotation;
+            _currentTool.transform.parent = ToolPosition;
+        }
+    }
+
+    void DropItem()
+    {
+        if(_currentTool)
+        {
+            _currentTool.DropTool();
+            _currentTool.transform.parent = null;
+            _currentTool.transform.position = transform.position;
+            _currentTool = null;
+        }
     }
 
     IEnumerable<Waypoint> LookForPath(Waypoint start, Waypoint end)

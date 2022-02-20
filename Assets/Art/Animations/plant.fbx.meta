@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cc84a6e9afbee0641911da85f788467e
+guid: e66a338f975c50945ad1598183be6a9a
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
@@ -39,7 +39,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 227
+      lastFrame: 156
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -59,8 +59,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9848771
+      - time: 0.973535
         functionName: EndAction
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5142119
+        functionName: UseItem
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
