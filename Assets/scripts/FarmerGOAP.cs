@@ -7,7 +7,7 @@ public class FarmerGOAP
 {
     public static IEnumerable<FarmerGOAPAction> ExecuteGOAP(FarmerGOAPState start, FarmerGOAPState final, IEnumerable<FarmerGOAPAction> posibleActions)
     {
-        int watchdog = 3000;
+        int watchdog = 300;
         var seq = AStarNormal<FarmerGOAPState>.Run(start, final,
             (curr, goal) => goal.worldState.money - curr.worldState.money,//Heuristica
             curr => curr.worldState.money >= final.worldState.money,//como satisfacer al objetivo final

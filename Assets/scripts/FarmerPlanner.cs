@@ -6,6 +6,7 @@ using System;
 
 public class FarmerPlanner : MonoBehaviour
 {
+    public int goalMoney;
     public FarmerGOAPState startState = new FarmerGOAPState();
     FarmerGOAPState goal = new FarmerGOAPState();
 
@@ -15,7 +16,7 @@ public class FarmerPlanner : MonoBehaviour
 
     private void Awake()
     {
-        goal.worldState.SetMoney(1000).SetEnergy(100).SetSeeds(0).SetWateredForToday(false).SetItem("").SetFarmG(0).SetCorn(0);
+        goal.worldState.SetMoney(goalMoney).SetEnergy(100).SetSeeds(0).SetWateredForToday(false).SetItem("").SetFarmG(0).SetCorn(0);
 
         actDic = new Dictionary<string, FarmerAction>()
         {
@@ -54,15 +55,14 @@ public class FarmerPlanner : MonoBehaviour
         }
         else
         {
-            //Debug.Log(plan.Count());
-            return plan.Select( act => act.name).
+            return plan.Select(act => act.name).
             Select(a=>
             {
                 if (actDic.Any(act => a == act.Key))
                     return actDic[a];
                 else
                     return default;
-            }).Where(a=> a!= default);
+            }).Where(a => a!= default);
         }
     }
 
@@ -71,22 +71,12 @@ public class FarmerPlanner : MonoBehaviour
     {
         return new List<FarmerGOAPAction>()
         {
-            new FarmerGOAPAction("sleep")
-            .SetCost(1f)
-            .PreCon((a)=>
-                    a.worldState.farmerEnergy <= 10 &&
-                    a.worldState.money < 1000)
-            .Effect((a)=>
-            {
-                a.worldState.farmerEnergy = 100;
-                a.worldState.hasWateredToday = false;
-                return a;
-            }),
             new FarmerGOAPAction("grabhoe")
             .SetCost(2f)
             .PreCon((a)=>
                     a.worldState.farmerEnergy > 10 &&
-                    a.worldState.currentItem == "")
+                    a.worldState.currentItem == "" &&
+                    a.worldState.farmGrowth <= 0)
             .Effect((a)=>
             {
                 a.worldState.currentItem = "hoe";
@@ -97,7 +87,8 @@ public class FarmerPlanner : MonoBehaviour
             .SetCost(2f)
             .PreCon((a) =>
                     a.worldState.farmerEnergy > 10 &&
-                    a.worldState.currentItem == "")
+                    a.worldState.currentItem == "" &&
+                    !a.worldState.hasWateredToday)
             .Effect((a)=>
             {
                 a.worldState.currentItem = "wateringcan";
@@ -135,7 +126,8 @@ public class FarmerPlanner : MonoBehaviour
                     a.worldState.farmerEnergy >= 20 &&
                     a.worldState.currentItem == "wateringcan" &&
                     a.worldState.farmGrowth < 1 &&
-                    a.worldState.farmGrowth > 0)
+                    a.worldState.farmGrowth > 0 &&
+                    !a.worldState.hasWateredToday)
             .Effect((a)=>
             {
                 a.worldState.farmerEnergy -= 20;
@@ -148,7 +140,7 @@ public class FarmerPlanner : MonoBehaviour
             .PreCon((a)=>
                     a.worldState.farmerEnergy >= 20 &&
                     a.worldState.currentItem == "hoe" &&
-                    a.worldState.farmGrowth == 0f &&
+                    a.worldState.farmGrowth <= 0f &&
                     a.worldState.seedAmount >= 5)
             .Effect((a)=>
             {
@@ -189,8 +181,18 @@ public class FarmerPlanner : MonoBehaviour
             {
                 a.worldState.currentItem = "";
                 return a;
-            })
-            ,
+            }),
+            new FarmerGOAPAction("sleep")
+            .SetCost(1f)
+            .PreCon((a)=>
+                    a.worldState.farmerEnergy <= 80 &&
+                    a.worldState.hasWateredToday)
+            .Effect((a)=>
+            {
+                a.worldState.SetEnergy(100);
+                a.worldState.hasWateredToday = false;
+                return a;
+            }),
             new FarmerGOAPAction("buyseed")
             .SetCost(2f)
             .PreCon((a)=>

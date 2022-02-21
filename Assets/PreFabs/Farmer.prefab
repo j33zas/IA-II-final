@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a60ef4f85ea6504593c7ddfab822ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalMoney: 1000
 --- !u!114 &3861709156642828984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,7 +49,7 @@ MonoBehaviour:
   ToolPosition: {fileID: 6198754806160420980}
   startMoney: 50
   startEnergy: 100
-  startSeeds: 0
+  startSeeds: 5
   startWatered: 0
   startItem: 
   startfarmGrowth: 0

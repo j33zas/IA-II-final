@@ -6,6 +6,8 @@ using System.Linq;
 
 public enum FarmerAction
 {
+    //el 1er valor de un enum se toma como el valor default, osea que FarmerAction.Default == default, no es re loco?
+    Default,
     Sleep,
     GrabHoe,
     GrabWateringCan,
@@ -266,11 +268,6 @@ public class Farmer : MonoBehaviour
             {
                 _myPlan = _myPlan.Skip(1);
                 _sm.Feed(currentStep);
-            }else if(!finished)
-            {
-                Debug.Log("End of plan! recalculating...");
-                _myPlan = _myPlanner.Plan(FWV);
-                _sm.Feed(_myPlan.FirstOrDefault());
             }
             else
                 _sm.Feed(FarmerAction.Win);
@@ -304,6 +301,7 @@ public class Farmer : MonoBehaviour
     void ExecutePlan(FarmerPlanner planner)
     {
         _myPlan = planner.Plan(FWV);
+        Debug.Log(_myPlan.Count());
         _sm.Feed(FarmerAction.NextStep);
     }
 

@@ -17,12 +17,12 @@ public class FarmerGOAPState
     {
         worldState = new FarmerWorldValues();
         worldState.
-        SetCorn(input.worldState.cornStored).
         SetEnergy(input.worldState.farmerEnergy).
-        SetFarmG(input.worldState.farmGrowth).
-        SetItem(input.worldState.currentItem).
         SetMoney(input.worldState.money).
+        SetFarmG(input.worldState.farmGrowth).
         SetSeeds(input.worldState.seedAmount).
+        SetCorn(input.worldState.cornStored).
+        SetItem(input.worldState.currentItem).
         SetWateredForToday(input.worldState.hasWateredToday);
         genAction = gen;
     }
