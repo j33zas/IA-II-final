@@ -330,7 +330,13 @@ public class Farmer : MonoBehaviour
     {
         _currentTool.UseTool();
     }
-
+    public void HarvestEvent()
+    {
+        var farm = Physics.OverlapSphere(transform.position, 5, 1 << LayerMask.NameToLayer("node"), QueryTriggerInteraction.Collide)
+        .Where(a => a.GetComponent<Farm>()).Select(a => a.GetComponent<Farm>()).First();
+        if (farm != null)
+            farm.Harvest();
+    }
     public void PickUpItem()
     {
         var closeby = Physics.OverlapSphere(transform.position, 5, 1 << LayerMask.NameToLayer("Default"), QueryTriggerInteraction.Collide)

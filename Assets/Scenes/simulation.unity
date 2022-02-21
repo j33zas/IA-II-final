@@ -8765,7 +8765,7 @@ Transform:
   - {fileID: 458629151}
   - {fileID: 2032275161}
   m_Father: {fileID: 1806991031}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &711121213
 PrefabInstance:
@@ -23663,6 +23663,7 @@ Transform:
   m_Children:
   - {fileID: 1403342715}
   - {fileID: 1885905203}
+  - {fileID: 2000835094}
   - {fileID: 703275138}
   m_Father: {fileID: 1445525461}
   m_RootOrder: 1
@@ -23709,6 +23710,7 @@ MonoBehaviour:
   plantedPos: {fileID: 1885905203}
   grownPos: {fileID: 1403342715}
   cornGO: {fileID: 703275137}
+  startCornPos: {fileID: 2000835094}
 --- !u!4 &1807869445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ff59678522128c24281fadbf8cd484a8,
@@ -25926,6 +25928,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1555495784}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2000835093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000835094}
+  m_Layer: 8
+  m_Name: harvested
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000835094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000835093}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.31799996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1806991031}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2002329375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28143,6 +28175,11 @@ PrefabInstance:
       propertyPath: shopNode
       value: 
       objectReference: {fileID: 1808132916}
+    - target: {fileID: 8004259356616482846, guid: 7e89bcaec8eda9a4fb383632c4c973ea,
+        type: 3}
+      propertyPath: startSeeds
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e89bcaec8eda9a4fb383632c4c973ea, type: 3}
 --- !u!1001 &7477204802344894379

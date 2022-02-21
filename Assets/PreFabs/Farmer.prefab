@@ -49,7 +49,7 @@ MonoBehaviour:
   startMoney: 50
   startEnergy: 100
   startSeeds: 0
-  startWatered: 1
+  startWatered: 0
   startItem: 
   startfarmGrowth: 0
   startCorn: 0

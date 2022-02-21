@@ -7,11 +7,8 @@ public class Farm : MonoBehaviour
     public Transform plantedPos;
     public Transform grownPos;
     public GameObject cornGO;
-    Transform startCornPos;
-    private void Awake()
-    {
-        startCornPos = cornGO.transform;
-    }
+    public Transform startCornPos;
+
     public void Plant()
     {
         cornGO.transform.position = plantedPos.position;

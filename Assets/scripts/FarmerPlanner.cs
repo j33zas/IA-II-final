@@ -74,7 +74,8 @@ public class FarmerPlanner : MonoBehaviour
             new FarmerGOAPAction("sleep")
             .SetCost(1f)
             .PreCon((a)=>
-                    a.worldState.farmerEnergy <= 9)
+                    a.worldState.farmerEnergy <= 10 &&
+                    a.worldState.money < 1000)
             .Effect((a)=>
             {
                 a.worldState.farmerEnergy = 100;
@@ -173,7 +174,7 @@ public class FarmerPlanner : MonoBehaviour
             .SetCost(2f)
             .PreCon((a)=>
                     a.worldState.currentItem == "hoe" &&
-                    a.worldState.farmGrowth > 0f)
+                    a.worldState.farmGrowth > 0)
             .Effect((a)=>
             {
                 a.worldState.currentItem = "";
