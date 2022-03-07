@@ -257,7 +257,7 @@ public class Farmer : MonoBehaviour
 
         win.OnEnter += (a) =>
         {
-            Debug.Log("you win");
+            _AN.SetBool("won", true);
         };
         #endregion
 
